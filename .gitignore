@@ -1,0 +1,10 @@
+*.sdf
+*.obj
+ipch/
+Debug/
+debug/
+Release/
+release/
+obj/
+Obj/
+3rdparty/lib
