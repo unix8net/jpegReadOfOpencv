@@ -91,6 +91,8 @@ using namespace std;
 
 	template<typename _Tp> inline bool Ptr<_Tp>::empty() const { return obj == 0; }
 #endif
+
+
 class BaseImageDecoder;
 class BaseImageEncoder;
 typedef BaseImageEncoder* ImageEncoder;

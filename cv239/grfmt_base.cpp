@@ -52,9 +52,9 @@ BaseImageDecoder::BaseImageDecoder()
     m_type = -1;
     m_buf_supported = false;
 
-	m_buf.type = 0;
-	m_buf.cols = 0;
-	m_buf.rows = 0;
+	m_buf.type = m_type;
+	m_buf.cols = m_width;
+	m_buf.rows = m_height;
 	m_buf.step = 0;
 	m_buf.data.ptr = 0;
 	m_buf.refcount = NULL;
@@ -64,6 +64,7 @@ BaseImageDecoder::BaseImageDecoder()
 bool BaseImageDecoder::setSource( const string& filename )
 {
     m_filename = filename;
+	m_buf.data.ptr = 0;
     return true;
 }
 //设置外部CvMat来读取头部信息用

@@ -17,7 +17,7 @@ int _tmain(int argc, _TCHAR* argv[])
 int main()
 {
 	clock_t start, end;
-
+	start = clock();
 	JpegDecoder jpegDector;
 	jpegDector.setSource("21.jpg");
 	jpegDector.readHeader();
@@ -29,7 +29,9 @@ int main()
 	
 	CvMat *mat = cvCreateMat(jpegDector.height(), jpegDector.width(),(jpegDector.type()));
 	jpegDector.readData(*mat);
-	
+	end = clock();
+	printf("Run time:%f ",(double)(end - start) );
+#if 0
 	unsigned char * data;
 	for(int i=0;i<10;i++)
 	{
@@ -42,13 +44,14 @@ int main()
 		}
 		printf("\n");
 	}
+#endif
 	printf("------cvMat-------\n\n");
 	cvReleaseMat(&mat);
 	//CvMat * imgSrc = cvLoadImageM("1.jpg");
 #if 0
 	IplImage *imgSrc = cvLoadImage("21.jpg");
 	IplImage *imgRes = cvCreateImage(cvGetSize(imgSrc),8,3);
-	start = clock();
+	
 	cout<<imgSrc->nChannels<<"  "<<imgSrc->depth<<endl;
 	//IplImage *imgRes = cvCreateImageHeader(cvGetSize(imgSrc),8,3);
 	//cvNamedWindow("test source", CV_WINDOW_AUTOSIZE);
